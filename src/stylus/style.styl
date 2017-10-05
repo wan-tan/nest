@@ -1,0 +1,194 @@
+$font = 'Fabrikat', sans-serif
+// $color1 = #5f0
+$color1 = rgba(60,255,10,1)
+$color_dark = rgba(10,50,0,.5)
+
+$color1 = rgba(255,255,255,.8)
+$color_dark = rgba(255,255,255,.2)
+
+// $color1 = #1cf
+// $color_dark = rgba(0,150,255,.15)
+// $color1 = #0c3
+
+$easing = cubic-bezier(.78,.04,.28,.96)
+$animate-duration = .9s
+
+// ------------------------------------------------------------------------------------
+// MIXINS
+// ------------------------------------------------------------------------------------
+media_queries = {
+ mobile : "only screen and (max-width: 600px)",
+ tablet : "only screen and (min-width: 601px) and (max-width: 800px)",
+ desktop : "only screen and (min-width: 801px) and (max-width: 1200px)"
+ wide  : "only screen and (min-width: 1201px)"
+}
+
+for_breakpoint(breakpoints)
+ conditions = ()
+ for breakpoint in breakpoints
+  push(conditions, media_queries[breakpoint])
+ conditions = join(", ", conditions)
+ @media conditions
+  {block}
+
+vendor(prop, args)
+ -webkit-{prop} args
+ -moz-{prop} args
+ -ms-{prop} args
+ -o-{prop} args
+ {prop} args
+
+border-radius()
+ vendor('border-radius', arguments)
+
+box-shadow()
+ vendor('box-shadow', arguments)
+
+transition()
+ vendor('transition', arguments)
+
+transform()
+ vendor('transform', arguments)
+
+transform-origin()
+ vendor('transform-origin', arguments)
+
+user-select()
+ vendor('user-select', arguments)
+
+background-linear-gradient(startPoint, startColor, startInterval, endColor, endInterval, deprecatedWebkitStartPoint = false, deprecatedWebkitEndPoint = false)
+ background-color startColor
+ if deprecatedWebkitStartPoint && deprecatedWebkitEndPoint
+  background-image -webkit-gradient(linear, deprecatedWebkitStartPoint, deprecatedWebkitEndPoint, color-stop(startInterval, startColor), color-stop(endInterval, endColor))
+ background-image -webkit-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+ background-image -moz-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+ background-image -ms-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+ background-image -o-linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+ background-image linear-gradient(startPoint, startColor startInterval, endColor endInterval)
+
+aspect-ratio(width, height)
+    position relative
+    &:before
+        display block
+        content ""
+        width 100%
+        padding-top (height / width) * 100%
+    > .content
+        position absolute
+        top 0
+        left 0
+        right 0
+        bottom 0
+
+// ------------------------------------------------------------------------------------
+// CSS BASIC
+// ------------------------------------------------------------------------------------
+
+
+
+body
+  height 100vh
+  width 100vw
+  max-height 100vh
+  max-width 100vw
+  margin 0
+  padding 20px
+  box-sizing border-box
+  background #000
+  background-size cover
+  background-position bottom
+
+
+div,span,h1,h2,h3,h4,h5,h6,p
+  font-family $font
+  color $color1
+
+h1
+  font-weight 900
+  text-transform uppercase
+
+h2
+  font-weight 100
+  text-transform uppercase
+
+.module
+  position relative
+  top 0
+  margin 10px
+  padding 0
+  display inline-grid
+  width calc(50vw - 40px)
+
+.headline
+  h1
+    top 0
+    z-index 9
+    margin 0 0 22px 0
+    line-height 0
+    padding 27px 0 10px 10px
+    position relative
+    text-shadow 0 0 10px rgba(0, 0, 0, .3)
+    color #000
+  .background
+    top 0
+    height 55px
+    width 100%
+    position absolute
+    color #000
+    box-shadow 0 0 13px $color1
+    transform-origin left
+    background $color1
+    padding 6px 10px 5px 10px
+    box-sizing border-box
+  .underline
+    box-shadow 0 0 10px $color1
+    transform-origin right
+    background $color1
+    height 1px
+    width 100%
+    margin 3px 0 0 0
+    padding 0
+
+.list
+  position relative
+  max-width 100%
+  margin 20px 0 0 0
+  .list-item
+    font-family "Source Code Pro"
+    font-weight 100
+    position relative
+    width 100%
+    height 28px
+    box-sizing border-box
+    margin 2px 0 0 0
+    font-size 12px
+    letter-spacing -.01em
+    text-transform uppercase
+    .list-item-text
+      padding 7px 0 6px 10px
+      text-shadow 0px 0 3px #fff
+      letter-spacing .04em
+      box-sizing border-box
+    .list-item-bg
+      position absolute
+      transform-origin left
+      width 100%
+      height 100%
+      background  $color_dark
+      // border 1px solid $color1
+      z-index -1
+
+
+.random-letter
+  display inline-block
+  color #fff
+  text-shadow -10px 0 10px #fff
+
+
+
+
+@media (max-width: 700px) {
+  .module{
+    width: calc(100vw - 60px);
+  }
+}
