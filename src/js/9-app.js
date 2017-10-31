@@ -1,8 +1,5 @@
 var animSpeed = 800
 
-
-
-
 function fillList(id, data){
   var content = ''
   for (var i = 0; i < data.length; i++) {
@@ -13,10 +10,8 @@ function fillList(id, data){
   id.innerHTML = content
 }
 
-
 fillList(document.getElementById('list-names'), names)
 fillList(document.getElementById('list-missions'), missions)
-
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -26,21 +21,12 @@ var headlineAnim = anime({
   targets: '.headline .background',
   scaleX: [0, 1],
   easing: 'easeInOutQuint',
-  duration: animSpeed-200,
+  duration: animSpeed - 200,
   delay: function(el, i){
     return i * 300
   },
   autoplay: true,
   loop: false
-});
-
-
-var headlineFlickerAnim = anime({
-  targets: '.headline .background',
-  opacity: [.8, 1, .9, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-  duration: 3400,
-  autoplay: false,
-  loop: true
 });
 
 var underlineAnim = anime({
@@ -87,7 +73,6 @@ var listItemTextAnim = anime({
   loop: false
 });
 
-
 var writtenTextAnim = anime({
   targets: '.written',
   translateX: 0,
@@ -107,8 +92,6 @@ var writtenTextAnim = anime({
   autoplay: true,
   loop: false
 });
-
-
 
 function writeText(el, randomness, randomDelay){
   // var el = document.getElementById(el)
@@ -144,11 +127,3 @@ function writeLetter(el, input, delay){
     el.innerHTML = input
   }, delay)
 }
-
-
-
-// Get all elements with the class .written
-// var writtenText = document.querySelectorAll('.written')
-// for (var i = 0; i < writtenText.length; i++) {
-//   writeText(writtenText[i])
-// }

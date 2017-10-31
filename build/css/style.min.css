@@ -101,6 +101,24 @@ h2 {
   font-size: 12px;
   letter-spacing: -0.01em;
   text-transform: uppercase;
+  -webkit-transition: all 0.6s linear;
+  -moz-transition: all 0.6s linear;
+  -ms-transition: all 0.6s linear;
+  -o-transition: all 0.6s linear;
+  transition: all 0.6s linear;
+}
+.list .list-item:hover {
+  cursor: pointer;
+  background: #fff;
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -ms-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.list .list-item:hover .list-item-text {
+  color: #000;
+  text-shadow: 0 0 5px #000;
 }
 .list .list-item .list-item-text {
   padding: 7px 0 6px 10px;

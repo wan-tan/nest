@@ -1,7 +1,7 @@
 $font = 'Fabrikat', sans-serif
 // $color1 = #5f0
-$color1 = rgba(60,255,10,1)
-$color_dark = rgba(10,50,0,.5)
+// $color1 = rgba(235,255,20,1)
+// $color_dark = rgba(50,55,0,.4)
 
 $color1 = rgba(255,255,255,.8)
 $color_dark = rgba(255,255,255,.2)
@@ -164,6 +164,14 @@ h2
     font-size 12px
     letter-spacing -.01em
     text-transform uppercase
+    transition all .6s linear
+    &:hover
+      cursor pointer
+      background #fff
+      transition all .2s linear
+      .list-item-text
+        color #000
+        text-shadow 0 0 5px #000
     .list-item-text
       padding 7px 0 6px 10px
       text-shadow 0px 0 3px #fff
