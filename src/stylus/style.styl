@@ -99,7 +99,7 @@ body
   background-position bottom
 
 
-div,span,h1,h2,h3,h4,h5,h6,p
+div,span,h1,h2,h3,h4,h5,h6,p,input,textarea
   font-family $font
   color $color1
 
@@ -116,7 +116,7 @@ h2
   top 0
   margin 10px
   padding 0
-  display inline-grid
+  display inline-block
   width calc(50vw - 40px)
 
 .headline
@@ -152,7 +152,7 @@ h2
 .list
   position relative
   max-width 100%
-  margin 20px 0 0 0
+  margin 0px 0 0 0
   .list-item
     font-family "Source Code Pro"
     font-weight 100
@@ -199,4 +199,59 @@ h2
   .module{
     width: calc(100vw - 60px);
   }
+}
+
+
+
+input{
+  position: relative;
+  border: 1px solid #fff;
+  font-size: .9em;
+  box-sizing: border-box;
+  text-transform: uppercase;
+  padding: 8px 15px;
+  margin: 0 0px 0px 0;
+  display: inline-block;
+  background: none;
+  width: calc(100% - 50px);
+  color: #fff;
+  float: left;
+  &:focus{
+    outline: none;
+  }
+}
+
+#list-names-submit{
+  position: relative;
+  right: 0;
+  display: inline-block;
+  width: 50px;
+  // height: 30px;
+  background: #fff;
+  color: #000;
+  font-weight: 900;
+  font-size: 2em;
+  line-height: 0;
+  padding: 16px 0 19px 0;
+  text-align: center;
+  transition: .1s all ease-in;
+  &:hover{
+    background: #000;
+    cursor: pointer;
+    color: #fff;
+  }
+}
+
+.list-item-bg, .list-item-text{
+  display: inline-block;
+  width: calc(100% - 23px);
+}
+
+.list-item-delete{
+  // background: #fff;
+  padding: 0 5px;
+  // color: #000;
+  font-size: 1.2em;
+  text-align: center;
+  display: inline;
 }

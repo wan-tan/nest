@@ -1,6 +1,3 @@
-
-
-
 var animSpeed = 800
 
 function fillList(id, data){
@@ -13,88 +10,91 @@ function fillList(id, data){
   id.innerHTML = content
 }
 
-// fillList(document.getElementById('list-names'), names)
-// fillList(document.getElementById('list-missions'), missions)
-
 function getRandomInt(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
+  return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var headlineAnim = anime({
-  targets: '.headline .background',
-  scaleX: [0, 1],
-  easing: 'easeInOutQuint',
-  duration: animSpeed - 200,
-  delay: function(el, i){
-    return i * 300
-  },
-  autoplay: true,
-  loop: false
-});
+setTimeout(function(){
+  var headlineAnim = anime({
+    targets: '.headline .background',
+    scaleX: [0, 1],
+    easing: 'easeInOutQuint',
+    duration: animSpeed - 200,
+    delay: function(el, i){
+      return i * 300
+    },
+    autoplay: true,
+    loop: false
+  });
 
-var underlineAnim = anime({
-  targets: '.headline .underline',
-  scaleX: [0, 1],
-  easing: 'easeInOutQuint',
-  duration: animSpeed,
-  delay: function(el, i){
-    return i * 100
-  },
-  autoplay: true,
-  loop: false
-});
+  var underlineAnim = anime({
+    targets: '.headline .underline',
+    scaleX: [0, 1],
+    easing: 'easeInOutQuint',
+    duration: animSpeed,
+    delay: function(el, i){
+      return i * 100
+    },
+    autoplay: true,
+    loop: false
+  });
 
-var listItemBgAnim = anime({
-  targets: '.list .list-item .list-item-bg',
-  scaleX: [0, 1],
-  delay: function(el, i){
-    return i * 100
-  },
-  easing: 'easeInOutQuad',
-  duration: animSpeed + 100,
-  autoplay: true,
-  loop: false
-});
+  var listItemBgAnim = anime({
+    targets: '.list .list-item .list-item-bg',
+    scaleX: [0, 1],
+    delay: function(el, i){
+      return i * 100
+    },
+    easing: 'easeInOutQuad',
+    duration: animSpeed + 100,
+    autoplay: true,
+    loop: false
+  });
 
-var listItemTextAnim = anime({
-  targets: '.list .list-item .list-item-text',
-  translateX: 0,
-  delay: function(el, i){
-    // console.log(i);
-    setTimeout(function(){
-      // console.log("a")
-      writeText(el, 2, 10)
-    }, i * 110 )
-    return i * 10
-  },
-  update: function(el, i){
-    // console.log("1");
-  },
-  easing: 'easeInOutQuad',
-  duration: animSpeed,
-  autoplay: true,
-  loop: false
-});
 
-var writtenTextAnim = anime({
-  targets: '.written',
-  translateX: 0,
-  delay: function(el, i){
-    // console.log(i);
-    setTimeout(function(){
-      // console.log("a")
-      writeText(el, 5, 20)
-    }, i * 500 )
-    return i * 10
-  },
-  update: function(el, i){
-    // console.log("1");
-  },
-  easing: 'easeInOutQuad',
-  duration: animSpeed,
-  autoplay: true,
-  loop: false
-});
+
+  var listItemTextAnim = anime({
+    targets: '.list .list-item .list-item-text',
+    translateX: 0,
+    delay: function(el, i){
+      // console.log(i);
+      setTimeout(function(){
+        // console.log("a")
+        writeText(el, 2, 10)
+      }, i * 110 )
+      return i * 10
+    },
+    update: function(el, i){
+      // console.log("1");
+    },
+    easing: 'easeInOutQuad',
+    duration: animSpeed,
+    autoplay: true,
+    loop: false
+  });
+
+
+  var writtenTextAnim = anime({
+    targets: '.written',
+    translateX: 0,
+    delay: function(el, i){
+      // console.log(i);
+      setTimeout(function(){
+        // console.log("a")
+        writeText(el, 5, 20)
+      }, i * 500 )
+      return i * 10
+    },
+    update: function(el, i){
+      // console.log("1");
+    },
+    easing: 'easeInOutQuad',
+    duration: animSpeed,
+    autoplay: true,
+    loop: false
+  });
+},800);
+
 
 function writeText(el, randomness, randomDelay){
   // var el = document.getElementById(el)
@@ -130,3 +130,11 @@ function writeLetter(el, input, delay){
     el.innerHTML = input
   }, delay)
 }
+
+
+
+
+
+
+// fillList(document.getElementById('list-names'), names)
+// fillList(document.getElementById('list-missions'), missions)

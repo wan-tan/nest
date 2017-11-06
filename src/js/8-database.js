@@ -8,8 +8,6 @@ firebase.initializeApp(config);
 var ref = firebase.database().ref()
 
 
-
-
 function newItem(dir, data) {
 	var newPostKey = ref.child(dir).push().key;
 	ref.child(dir).child(newPostKey).set(data);
@@ -21,54 +19,26 @@ function loadList(dir, callback){
 	});
 }
 
-
 function showList(el, obj){
-	// var content
-	var i = 0
 	for (var key in obj) {
-		// console.log(obj[key].title);
-		i++
-		el.innerHTML += '<div class="list-item"><div class="list-item-bg"></div><div class="list-item-text" data-content="' + obj[key].title + '"></div></div>'
-		// console.log(.writeText
-		writeText(el.querySelectorAll('.list-item-text')[i], 2, 10 + i*50)
+		el.innerHTML += '<div class="list-item"><div class="list-item-bg"></div><div class="list-item-text" data-content="' + obj[key].title + '"></div><div class="list-item-delete">x</div></div>'
 	}
-// el.innerHTML = content
-
-
-	// writeText(el, 2, 10)
 }
-
-// var listItemTextAnim = anime({
-//   targets: '.list .list-item .list-item-text',
-//   translateX: 0,
-//   delay: function(el, i){
-//     // console.log(i);
-//     setTimeout(function(){
-//       // console.log("a")
-//       writeText(el, 2, 10)
-//     }, i * 110 )
-//     return i * 10
-//   },
-//   update: function(el, i){
-//     // console.log("1");
-//   },
-//   easing: 'easeInOutQuad',
-//   duration: animSpeed,
-//   autoplay: true,
-//   loop: false
-// });
-
-
-// var content = ''
-// for (var i = 0; i < data.length; i++) {
-// 	// console.log(data[i]);
-//
-// }
-// console.log(content);
-
-// loadList('lists', function(data){console.log(data);})
-
 
 loadList('lists/thelist', function(data){
 	showList(document.getElementById('list-names'),data)
 })
+
+
+
+
+document.getElementById('list-names-input').addEventListener('keypress', function(e){
+  if (e.keyCode == 13) {
+		addName()
+  }
+});
+
+function addName(){
+	newItem('lists/thelist', {title:document.getElementById('list-names-input').value})
+	document.getElementById('list-names').innerHTML += '<div class="list-item"><div class="list-item-bg"></div><div class="list-item-text" data-content="' + this.value + '"></div></div>'
+}
