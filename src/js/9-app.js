@@ -1,17 +1,20 @@
+
+
+
 var animSpeed = 800
 
 function fillList(id, data){
   var content = ''
   for (var i = 0; i < data.length; i++) {
-    console.log(data[i]);
+    // console.log(data[i]);
     content += '<div class="list-item"><div class="list-item-bg"></div><div class="list-item-text" data-content="' + data[i] + '"></div></div>'
   }
-  console.log(content);
+  // console.log(content);
   id.innerHTML = content
 }
 
-fillList(document.getElementById('list-names'), names)
-fillList(document.getElementById('list-missions'), missions)
+// fillList(document.getElementById('list-names'), names)
+// fillList(document.getElementById('list-missions'), missions)
 
 function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
